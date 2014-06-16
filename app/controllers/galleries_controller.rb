@@ -16,6 +16,22 @@ class GalleriesController < ApplicationController
     redirect_to "/galleries/#{gallery.id}"
   end
 
+  def edit
+    @gallery = Gallery.find(params[:id])
+  end
+
+  def update
+    gallery = Gallery.find(params[:id])
+    gallery.update(gallery_params)
+    redirect_to "/galleries/#{gallery.id}"
+  end
+
+  def destroy
+    gallery = Gallery.find(params[:id])
+    gallery.destroy
+    redirect_to "/"
+  end
+
   private
 
 # This is creating STRONG params. The page can no longer be hacked.
