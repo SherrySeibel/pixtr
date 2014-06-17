@@ -1,4 +1,4 @@
-<%= form_for @gallery, url: "/galleries/:#{@gallery.id}" do |form| %>
+<%= form_for @gallery, url: "/galleries/#{@gallery.id}" do |form| %>
   <div>
     <%= form.label "New gallery name" %>
     <%= form.text_field :name %>
