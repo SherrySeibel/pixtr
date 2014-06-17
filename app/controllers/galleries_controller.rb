@@ -12,8 +12,13 @@ class GalleriesController < ApplicationController
   end
 
   def create
-    gallery = Gallery.create(gallery_params)
-    redirect_to "/galleries/#{gallery.id}"
+    gallery = Gallery.new(gallery_params)
+    if gallery.save
+      redirect_to "/galleries/#{gallery.id}"
+    else 
+      @gallery = gallery # views only have access to instance variables. 
+      render :new # Renders a new template. Not in an action. Could redirect, but we want them to keep what they had before. 
+    end
   end
 
   def edit
@@ -23,7 +28,8 @@ class GalleriesController < ApplicationController
   def update
     gallery = Gallery.find(params[:id])
     gallery.update(gallery_params)
-    redirect_to "/galleries/#{gallery.id}"
+
+    redirect_to gallery
   end
 
   def destroy

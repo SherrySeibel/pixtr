@@ -10,6 +10,26 @@ class ImagesController < ApplicationController
     redirect_to "/galleries/#{gallery.id}"
   end
 
+  def destroy
+    image = Image.find(params[:id])
+    gallery = Gallery.find(params[:gallery_id])
+    image.destroy
+    redirect_to "/galleries/#{gallery.id}"
+  end
+
+  def edit
+    @image = Image.find(params[:id])
+    @gallery = Gallery.find(params[:id])
+  end
+
+  def update
+    gallery = Gallery.find(params[:gallery_id])
+    image = Image.find(params[:gallery_id])
+    image.update(image_params) 
+
+    redirect_to gallery
+  end
+
   private
 
   def image_params
