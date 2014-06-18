@@ -3,14 +3,16 @@
 
 <% @gallery.images.each do |image| %>
 <p><%= image_tag image.url %></p>
-<%= link_to "Delete image", "/galleries/#{@gallery.id}/images/#{image.id}", method: :delete %>
+<%= link_to "Delete image", [@gallery, image], method: :delete %>
 <%= link_to "Edit image", [:edit, @gallery, image] %>
 <% end %>
 
 <p></p>
-<%= link_to "Update gallery", "/galleries/#{@gallery.id}/edit" %>
+<%= link_to "Update gallery", [:edit, @gallery] %>
 
 <%= link_to "Delete gallery", @gallery, method: :delete %>
 
 <%= link_to "Add an image", [:new, @gallery, :image] %>
+
+<p><%= link_to "Home", root_path %></p>
 

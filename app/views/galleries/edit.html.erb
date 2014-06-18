@@ -1,4 +1,6 @@
 <%= form_for @gallery, url: "/galleries/#{@gallery.id}" do |form| %>
+<%= render "error_messages", target: @gallery %>
+
   <div>
     <%= form.label "New gallery name" %>
     <%= form.text_field :name %>

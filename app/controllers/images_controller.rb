@@ -5,16 +5,14 @@ class ImagesController < ApplicationController
   end
 
   def create
-    image = Image.create(image_params)
-    gallery = Gallery.find(params[:gallery_id])
-    redirect_to "/galleries/#{gallery.id}"
-  end
+    @image = Image.new(image_params)
+    @gallery = Gallery.find(params[:gallery_id])
 
-  def destroy
-    image = Image.find(params[:id])
-    gallery = Gallery.find(params[:gallery_id])
-    image.destroy
-    redirect_to "/galleries/#{gallery.id}"
+    if @image.save
+      redirect_to @gallery
+    else
+      render :new      
+    end
   end
 
   def edit
@@ -23,11 +21,20 @@ class ImagesController < ApplicationController
   end
 
   def update
-    gallery = Gallery.find(params[:gallery_id])
-    image = Image.find(params[:gallery_id])
-    image.update(image_params) 
+    @gallery = Gallery.find(params[:gallery_id])
+    @image = Image.find(params[:gallery_id])
+     if @image.update(image_params) 
+      redirect_to @gallery
+    else
+      render :edit
+    end
+  end
 
-    redirect_to gallery
+    def destroy
+    image = Image.find(params[:id])
+    gallery = Gallery.find(params[:gallery_id])
+    image.destroy
+    redirect_to "/galleries/#{gallery.id}"
   end
 
   private

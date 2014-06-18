@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root to:"galleries#index"
+  root to: "galleries#index"
   resources :galleries, only: [:show, :new, :create, :edit, :update, :destroy] do
-    resources :images, only: [:new, :create, :post, :edit, :update, :destroy,]
+    resources :images, only: [:new, :create, :show, :edit, :update, :destroy]
 
 
     # only nest resources once.

@@ -1,4 +1,6 @@
 <%= form_for @gallery do |form| %>
+  <%= render "error_messages", target: @gallery %>
+
   <div>
     <%= form.label :name %>
     <%= form.text_field :name %>
@@ -11,5 +13,5 @@
 
   <div>
     <%= form.submit "Create gallery" %>
-  </div>
+  </div> 
 <% end %>
