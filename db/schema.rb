@@ -30,11 +30,15 @@ ActiveRecord::Schema.define(version: 20140619151956) do
     t.datetime "updated_at"
   end
 
+  add_index "images", ["gallery_id"], name: "index_images_on_gallery_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",           null: false
     t.string   "password_digest", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
