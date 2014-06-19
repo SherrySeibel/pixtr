@@ -41,3 +41,6 @@ gem 'spring',        group: :development
 # Helps with password encryption  
   gem 'monban-generators'
 
+# Heroku  	
+  gem 'rails_12factor', group: :production
+
