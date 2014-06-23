@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
 
   def create
     @gallery = current_user.galleries.find(params[:gallery_id])
-    @image = Image.new(image_params)
+    @image = @gallery.images.find(image_params)
 
     if @image.save
       redirect_to @gallery
@@ -16,16 +16,14 @@ class ImagesController < ApplicationController
   end
 
   def edit
-    @gallery = current_user.galleries.find(params[:gallery_id])
-    @image = @gallery.images.find(params[:id])
+    @image = current_user.images.find(params[:id])
   end
 
 def update
-    @gallery = current_user.galleries.find(params[:gallery_id])
-    @image = @gallery.images.find(params[:id])
+    @image = current_user.images.find(params[:id])
 
     if @image.update(image_params)
-      redirect_to @gallery
+      redirect_to @image.gallery
     else
       render :edit
     end
@@ -43,12 +41,12 @@ def update
   def image_params
     params.
       require(:image).
-      permit(:url).
-      merge(gallery_id: params[:gallery_id])
+      permit(:url)
 
-      # { url: http://s3-ec.buzzfed.com/static/enhanced/terminal05/2012/7/31/15/anigif_enhanced-buzz-5806-1343761383-2.gif } 
-      # after merge.... { url: http://s3-ec.buzzfed.com/static/enhanced/terminal05/2012/7/31/15/anigif_enhanced-buzz-5806-1343761383-2.gif 
+
+      # { url: http://s3-ec.buzzfed.com/static/enhanced/terminal05/2012/7/31/15/anigif_enhanced-buzz-5806-1343761383-2.gif }
+      # after merge.... { url: http://s3-ec.buzzfed.com/static/enhanced/terminal05/2012/7/31/15/anigif_enhanced-buzz-5806-1343761383-2.gif
       # gallery_id: 1 }
-      # 
+      #
   end
 end

@@ -5,7 +5,7 @@
 <% @gallery.images.each do |image| %>
   <p><%= image_tag image.url %></p>
   <%= link_to "Delete image", [@gallery, image], method: :delete %>
-  <%= link_to "Edit image", [:edit, @gallery, image] %>
+  <%= link_to "Edit image", [:edit, image] %>
   <p>Created <%= time_ago_in_words image.created_at %> ago</p>
 <% end %>
 

@@ -1,2 +1,6 @@
-<%= render "form" %>
+<% form_for @image do |form| %>
+ <%= render "error_messages", target: @image %>
+ <%= render "form", form: form %>
 
+  <%= form.submit "Update image" %>
+<% end %>
