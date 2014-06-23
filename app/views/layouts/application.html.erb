@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-   <title>Pixtr</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
+<head>
+  <title>Pixtr</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
 <body>
 
 <h1>Pixtr</h1>
 <% if signed_in? %>
-  <%= button_to "Sign out", :session, method: :delete %>  
+  <%= button_to "Sign out", :session, method: :delete %>
 <% else %>
-  <%= link_to "Sign up", [:new, :user] %>
+  <% unless controller_name == "users" && action_name == "new" %>
+    <%= link_to "Sign up", [:new, :user] %>
+  <% end %>
   <%= link_to "Sign in", [:new, :session] %>
 <% end %>
- 
+
 <%= yield %>
 
 </body>
