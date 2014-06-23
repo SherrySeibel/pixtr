@@ -3,12 +3,12 @@
 <p><%= @gallery.description %></p>
 
 <% @gallery.images.each do |image| %>
-  <p><%= link_to image do %></p>
+  <%= link_to image do %>
     <%= image_tag image.url %>
   <% end %>
 
-  <%= link_to "Delete image", [@gallery, image], method: :delete %>
-  <%= link_to "Edit image", [:edit, image] %>
+  <p><%= link_to "Delete image", [@gallery, image], method: :delete %>
+  <%= link_to "Edit image", [:edit, image] %></p>
   <p>Created <%= time_ago_in_words image.created_at %> ago</p>
 <% end %>
 

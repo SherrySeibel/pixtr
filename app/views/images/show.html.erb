@@ -1,1 +1,25 @@
 <%= image_tag @image.url %>
+
+ <div>
+  <%= form_for [@image, @comment] do |form| %>
+    <%= render "error_messages", target: @comment %>
+    <%= form.label :body, "Comment" %>
+    <%= form.text_area :body %>
+ </div>
+
+  <div>
+    <%= form.submit "Submit" %>
+  </div>
+
+   <% end %>
+  <div>
+    <ul>
+      <% @comments.each do |comment| %>
+        <li>
+          <p><%= comment.body %></p>
+          <p><%= time_ago_in_words comment.created_at %> ago</p>
+          <p>Written by:<%= comment.user.email  %></p>
+       </li>
+    <% end %>
+  </ul>
+</div>
