@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
   root to: "galleries#index"
   resources :galleries, only: [:show, :new, :create, :edit, :update, :destroy] do
-    resources :images, only: [:new, :create, :show, :destroy]
+    resources :images, only: [:new, :create, :destroy]
 
   end
-  resources :images, only: [:edit, :update]
+  resources :images, only: [:edit, :update, :show]
     # only nest resources once.
     # get "/images/new" => "images#new"
     # post "/images" => "images#create"
