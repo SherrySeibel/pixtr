@@ -1,4 +1,7 @@
 class ImagesController < ApplicationController
+  def show
+    @image = Image.find(params[:id])
+  end
   def new
     @gallery = current_user.galleries.find(params[:gallery_id])
     @image = Image.new

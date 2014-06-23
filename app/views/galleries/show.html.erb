@@ -1,9 +1,12 @@
 <h1><%= @gallery.name %></h1>
-<p>Proudly owned by <%= @gallery.user.email %> </p> 
+<p>Proudly owned by <%= @gallery.user.email %> </p>
 <p><%= @gallery.description %></p>
 
 <% @gallery.images.each do |image| %>
-  <p><%= image_tag image.url %></p>
+  <p><%= link_to image do %></p>
+    <%= image_tag image.url %>
+  <% end %>
+
   <%= link_to "Delete image", [@gallery, image], method: :delete %>
   <%= link_to "Edit image", [:edit, image] %>
   <p>Created <%= time_ago_in_words image.created_at %> ago</p>
@@ -13,5 +16,4 @@
   <%= link_to "Update gallery", [:edit, @gallery] %>
   <%= link_to "Delete gallery", @gallery, method: :delete %>
   <%= link_to "Add an image", [:new, @gallery, :image] %>
-  
 <% end %>
