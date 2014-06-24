@@ -3,6 +3,7 @@ class ImagesController < ApplicationController
     @image = Image.find(params[:id])
     @comment = Comment.new
     @comments = @image.comments.recent
+    @groups = Group.all
   end
 
   def new

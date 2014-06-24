@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # pasword_digest makes sure the passwords are encrypted.
 
   def member?(group)
-    group_ids.include?(group.id)
+    groups.include?(group)
     #GroupMembershop.where(group_id: group.id, user_id: self.id).size > 0
   end
 end

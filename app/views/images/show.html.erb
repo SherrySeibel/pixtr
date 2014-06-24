@@ -1,17 +1,14 @@
 <%= image_tag @image.url %>
 
  <div>
-  <%= form_for [@image, @comment] do |form| %>
-    <%= render "error_messages", target: @comment %>
-    <%= form.label :body, "Comment" %>
-    <%= form.text_area :body %>
+  <%= form_for [@image] do |form| %>
+    <%= render "error_messages", target: @image %>
+    <%= form.label "Groups" %>
+    <%= form.collection_check_boxes :group_ids, @groups, :id, :name %>
+    <%= form.submit "Update groups" %>
+ <% end %>
  </div>
 
-  <div>
-    <%= form.submit "Submit" %>
-  </div>
-
-   <% end %>
   <div>
     <ul>
       <% @comments.each do |comment| %>
@@ -22,4 +19,14 @@
        </li>
     <% end %>
   </ul>
+
+  <div>
+<%= form_for [@image, @comment] do |form| %>
+  <%= render "error_messages", target: @comment %>
+  <%= form.label :body %>
+  <%= form.text_area :body %>
+  <%= form.submit "Submit Comment" %>
+<% end %>
+</div>
+
 </div>
