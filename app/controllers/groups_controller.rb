@@ -4,9 +4,9 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.new(group_params)
+    @group = Group.new(group_params)
 
-    if group.save
+    if @group.save
       redirect_to :groups
     else
       render :new
@@ -15,6 +15,7 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+    @group_membership = GroupMembership.new
   end
 
   private
