@@ -3,6 +3,9 @@
   <% @groups.each do |group| %>
     <li>
       <%= render group %>
+      <% if current_user.member?(group) %>
+        <%= button_to "Leave this group", [group, :group_membership], method: :delete %>
+      <% end %>
     </li>
   <% end %>
 

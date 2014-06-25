@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: "galleries#index"
 
   resources :groups, only: [:new, :create, :index, :show] do
-    resource :group_membership, only: [:create]
+    resource :group_membership, only: [:create, :destroy]
   end
 
   resources :galleries, only: [:show, :new, :create, :edit, :update, :destroy] do
