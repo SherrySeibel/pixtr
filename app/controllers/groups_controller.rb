@@ -21,6 +21,7 @@ class GroupsController < ApplicationController
   def index
     @groups = Group.all
     @group_membership = GroupMembership.new
+    @my_groups = current_user.groups
   end
 
   def show

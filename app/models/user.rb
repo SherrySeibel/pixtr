@@ -15,4 +15,12 @@ class User < ActiveRecord::Base
     groups.include?(group)
     #GroupMembershop.where(group_id: group.id, user_id: self.id).size > 0
   end
+
+  def join(group)
+    groups << group
+  end
+
+  def leave(group)
+    groups.destroy(group)
+  end
 end
