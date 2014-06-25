@@ -13,7 +13,7 @@ class GalleriesController < ApplicationController
 
   def create
     params_with_user_id = gallery_params.merge(
-      user_id: current_user.id # user_id is a helper.
+      user_id: current_user.id # current_user is a helper.
     )
     @gallery = Gallery.new(params_with_user_id)
     if @gallery.save

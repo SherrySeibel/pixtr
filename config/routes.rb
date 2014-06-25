@@ -4,14 +4,16 @@ Rails.application.routes.draw do
   root to: "galleries#index"
 
   resources :groups, only: [:new, :create, :index, :show] do
-    resources :group_memberships, only: [:create]
+    resource :group_membership, only: [:create]
   end
+
   resources :galleries, only: [:show, :new, :create, :edit, :update, :destroy] do
     resources :images, only: [:new, :create, :destroy]
 
   end
   resources :images, only: [:edit, :update, :show] do
     resources :comments, only: [:create]
+    resources :group_images, only: [:create]
   end
     # only nest resources once.
     # get "/images/new" => "images#new"

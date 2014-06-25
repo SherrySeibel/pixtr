@@ -13,7 +13,7 @@ class ImagesController < ApplicationController
 
   def create
     @gallery = current_user.galleries.find(params[:gallery_id])
-    @image = @gallery.images.find(image_params)
+    @image = @gallery.images.new(image_params)
 
     if @image.save
       redirect_to @gallery
@@ -48,7 +48,8 @@ class ImagesController < ApplicationController
   def image_params
     params.
       require(:image).
-      permit(:url).
-      merge(user_id: current_user.id)
+      permit(:url,
+             group_ids: []
+            )
   end
 end
