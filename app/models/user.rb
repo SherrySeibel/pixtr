@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   has_many :group_memberships
   has_many :groups, through: :group_memberships
 
+  has_many :likes
+  has_many :liked_images, through: :likes, source: :image
+
   validates :email, presence: true, uniqueness: true # Makes sure that
   # users can only have one email address in the database.
   validates :password_digest, presence: true
@@ -22,5 +25,9 @@ class User < ActiveRecord::Base
 
   def leave(group)
     groups.destroy(group)
+  end
+
+  def like(image)
+    liked_images << image
   end
 end
