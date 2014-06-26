@@ -6,7 +6,8 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    unlike = Like.find(params[:image_id])
-    current_user.unlike.destroy(unlike)
+    image = Image.find(params[:image_id])
+    current_user.unlike(image)
+    redirect_to image
   end
 end
