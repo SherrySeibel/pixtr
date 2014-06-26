@@ -17,8 +17,7 @@ Rails.application.routes.draw do
     resource :like, only: [:create, :destroy]
   end
 
-  resources :tags, only: [:new, :create] do
-end
+  resources :tags, only: [:new, :create]
     # only nest resources once.
     # get "/images/new" => "images#new"
     # post "/images" => "images#create"

@@ -2,8 +2,8 @@
 
 <div>
   <%= link_to "Create new tag", [:new, :tag] %>
+</div>
 
- <div>
   <%= form_for [@image] do |form| %>
     <%= render "error_messages", target: @image %>
     <%= form.label "Groups" %>

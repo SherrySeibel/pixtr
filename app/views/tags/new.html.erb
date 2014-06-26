@@ -1,9 +1,15 @@
 <h1>New tag</h1>
 
 <div>
-  <%= form_for @tag do |form| %>
-    <%= form.label :tag, "Tag:" %>
-    <%= form.text_field :tag %>
+  <%= form_for [@tag] do |form| %>
+    <%= render "error_messages", target: @tag %>
+    <%= form.label :tag_name, "Tag:" %>
+    <%= form.text_field :tag_name %>
     <%= form.submit "Enter" %>
   <% end %>
 </div>
+
+<div>
+  <h4>Tags used before: </h4>
+</div>
+

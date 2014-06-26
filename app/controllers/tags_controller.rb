@@ -4,15 +4,20 @@ class TagsController < ApplicationController
   end
 
   def create
-#     @image = current_user.images.find(params[:image_id])
-#     @tag = @image.tags.new(tag_params)
+     tag = Tag.new(tag_params)
+
+     if tag.save
+       redirect_to [:new, :tag]
+     else
+       render :new
+     end
   end
-#
-#   private
-#
-#   def tag_params
-#     params.
-#       require(:tag).
-#       permit(:name,)
-#   end
- end
+
+   private
+
+   def tag_params
+    params.
+      require(:tag).
+      permit(:tag_name,)
+  end
+end
