@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :liked_images, through: :likes, source: :image
 
+  has_many :tags, through: :images
+
   validates :email, presence: true, uniqueness: true # Makes sure that
   # users can only have one email address in the database.
   validates :password_digest, presence: true

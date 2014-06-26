@@ -1,4 +1,7 @@
-<%= image_tag @image.url %>
+<div><%= image_tag @image.url %></div>
+
+<div>
+  <%= link_to "Create new tag", [:new, :tag] %>
 
  <div>
   <%= form_for [@image] do |form| %>
@@ -10,6 +13,7 @@
  </div>
 
  <div>
+   This many people like this image: <%= @image.likes.count %>
   <% if current_user.like?(@image) %>
     <%= button_to "Unlike", [@image, :like], method: :delete %>
   <% else %>
