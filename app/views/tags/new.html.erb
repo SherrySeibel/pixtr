@@ -11,5 +11,10 @@
 
 <div>
   <h4>Tags used before: </h4>
+  <ul>
+    <% @tags.each do |tag| %>
+      <li><%= tag.tag_name %></li>
+    <% end %>
+  </ul>
 </div>
 
