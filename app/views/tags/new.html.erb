@@ -1,7 +1,7 @@
 <h1>New tag</h1>
 
 <div>
-  <%= form_for [@tag] do |form| %>
+  <%= form_for @tag do |form| %>
     <%= render "error_messages", target: @tag %>
     <%= form.label :tag_name, "Tag:" %>
     <%= form.text_field :tag_name %>

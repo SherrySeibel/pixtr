@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<h1>Pixtr</h1>
+<h1><%= link_to "Pixtr", root_path %></h1>
 <% if signed_in? %>
   <%= button_to "Sign out", :session, method: :delete %>
   <%= link_to "Create a new group", [:new, :group] %>

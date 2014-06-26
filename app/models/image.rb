@@ -4,6 +4,9 @@ class Image < ActiveRecord::Base # This is a model, representing an object in ou
 
   has_many :likes
 
+  has_many :tag_lists
+  has_many :tags, through: :tag_lists
+
   has_many :group_images
   has_many :groups, through: :group_images
 

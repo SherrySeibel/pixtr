@@ -4,20 +4,29 @@
   <%= link_to "Create new tag", [:new, :tag] %>
 </div>
 
+<div>
   <%= form_for [@image] do |form| %>
     <%= render "error_messages", target: @image %>
-    <%= form.label "Groups" %>
+    <%= form.label "Groups:" %>
     <%= form.collection_check_boxes :group_ids, @groups, :id, :name %>
     <%= form.submit "Update groups" %>
   <% end %>
  </div>
 
  <div>
-   This many people like this image: <%= @image.likes.count %>
+   <%= form_for [@image] do |form| %>
+    <%= form.label "Tags:" %>
+    <%= form.collection_check_boxes :tag_lists, @tags, :id, :tag_name %>
+    <%= button_to "add tag!" %>
+  <% end %>
+ </div>
+
+ <div>
+   this many people like this image: <%= @image.likes.count %>
   <% if current_user.like?(@image) %>
-    <%= button_to "Unlike", [@image, :like], method: :delete %>
+    <%= button_to "unlike", [@image, :like], method: :delete %>
   <% else %>
-      <%= button_to "Like!", [@image, :like] %>
+      <%= button_to "like!", [@image, :like] %>
   <% end %>
  </div>
 
@@ -27,7 +36,7 @@
         <li>
           <p><%= comment.body %></p>
           <p><%= time_ago_in_words comment.created_at %> ago</p>
-          <p>Written by:<%= comment.user.email  %></p>
+          <p>written by:<%= comment.user.email  %></p>
        </li>
     <% end %>
   </ul>
@@ -37,7 +46,7 @@
   <%= render "error_messages", target: @comment %>
   <%= form.label :body %>
   <%= form.text_area :body %>
-  <%= form.submit "Submit Comment" %>
+  <%= form.submit "submit comment" %>
 <% end %>
 </div>
 
