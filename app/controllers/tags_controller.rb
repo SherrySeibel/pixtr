@@ -5,11 +5,12 @@ class TagsController < ApplicationController
   end
 
   def create
-     tag = Tag.new(tag_params)
+     @tag = Tag.new(tag_params)
 
-     if tag.save
+     if @tag.save
        redirect_to [:new, :tag]
      else
+       @tags = Tag.all
        render :new
      end
   end
